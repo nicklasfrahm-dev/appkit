@@ -32,7 +32,7 @@ func TestGetLoggerWithLogger(t *testing.T) {
 
 	// Act.
 	ctx := context.WithValue(context.TODO(), logging.GetContextKey(), logger)
-	retrievedLogger := logging.GetLogger(ctx)
+	retrievedLogger := logging.FromContext(ctx)
 
 	// Assert.
 	assert.Equal(t, logger, retrievedLogger, "should retrieve the logger from the context")
@@ -43,7 +43,7 @@ func TestGetLoggerWithDefault(t *testing.T) {
 	t.Parallel()
 
 	// Act.
-	logger := logging.GetLogger(context.TODO())
+	logger := logging.FromContext(context.TODO())
 
 	// Assert.
 	assert.NotNil(t, logger, "should retrieve a default logger from the context")

@@ -21,6 +21,7 @@ This package provides a simple logging library based on [zap][github-zap], which
 package main
 
 import (
+  "context"
 	"fmt"
 
 	"github.com/nicklasfrahm-dev/appkit/logging"
@@ -40,11 +41,21 @@ func main() {
 	logger.Info("Starting HTTP server", zap.Int("port", port))
 
 	printLog(logger)
+
+  // This is how you can use a context to pass a logger around.
+  ctx := logging.WithLogger(context.Background(), logger)
+  printLogWithContext(ctx)
 }
 
 // This is how you can pass the logger around.
 func printLog(logger *zap.Logger) {
 	logger.Info("This is a log message", zap.String("key", "value"))
+}
+
+// This is how you can use a context to pass the logger around.
+func printLogWithContext(ctx context.Context) {
+  logger := logging.FromContext(ctx)
+  logger.Info("This is a log message", zap.String("key", "value"))
 }
 ```
 

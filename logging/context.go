@@ -19,8 +19,8 @@ func WithLogger(ctx context.Context, logger *zap.Logger) context.Context {
 	return context.WithValue(ctx, GetContextKey(), logger)
 }
 
-// GetLogger returns the logger from the context.
-func GetLogger(ctx context.Context) *zap.Logger {
+// FromContext returns the logger from the context.
+func FromContext(ctx context.Context) *zap.Logger {
 	if logger, ok := ctx.Value(GetContextKey()).(*zap.Logger); ok {
 		return logger
 	}
