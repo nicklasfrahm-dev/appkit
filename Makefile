@@ -12,7 +12,7 @@ help: ## List all targets.
 
 .PHONY: test
 test: ## Run tests.
-	go test -v ./...
+	go test -cover -v ./...
 
 LINTER := $(GOPATH)/bin/golangci-lint
 $(LINTER):
