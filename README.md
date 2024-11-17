@@ -45,6 +45,9 @@ func main() {
 	// This is how you can use a context to pass a logger around.
 	ctx := logging.WithLogger(context.Background(), logger)
 	printLogWithContext(ctx)
+
+	// This is how you can add fields to the logger in the context.
+	printLogWithContext(logging.WithFields(ctx, zap.String("key", "value")))
 }
 
 // This is how you can pass the logger around.
