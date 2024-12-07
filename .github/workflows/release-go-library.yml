@@ -1,0 +1,12 @@
+name: Release
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  documentation:
+    uses: nicklasfrahm-dev/.github/.github/workflows/release-go-library.yml@main
+    secrets: inherit
