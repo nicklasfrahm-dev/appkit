@@ -7,6 +7,12 @@ on:
     branches: [ "main" ]
 
 jobs:
-  documentation:
+  Release:
+    name: Release
     uses: nicklasfrahm-dev/.github/.github/workflows/release-go-library.yml@main
     secrets: inherit
+    permissions:
+      checks: write
+      contents: write
+      pull-requests: write
+      issues: write
